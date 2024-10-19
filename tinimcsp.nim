@@ -1,19 +1,17 @@
-import std / intsets
 import std / sequtils
 
 type
   Domain* = object
-    values: IntSet
+    values: set[int8]
 
-func newDomain*(n: int): Domain =
-  result.values = (0 ..< n).toSeq.toIntSet
+func newDomain*(n: int8): Domain =
+  result.values = {0 .. (n-1)}
 
 func size*(d: Domain): int =
   d.values.len
 
 func min*(d: Domain): int =
-  discard
-  #d.values.min # min not available for intsets!
+  d.values.min
 
 
 when isMainModule:
