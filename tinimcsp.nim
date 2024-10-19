@@ -1,20 +1,13 @@
-import std / sequtils
+import seqintset
 
 type
-  Domain* = object
-    values: set[int8]
-
-func newDomain*(n: int8): Domain =
-  result.values = {0 .. (n-1)}
-
-func size*(d: Domain): int =
-  d.values.len
-
-func min*(d: Domain): int =
-  d.values.min
+  Domain* = SeqIntSet
 
 
 when isMainModule:
-  var d = newDomain(3)
+  var d = Domain.init(3)
+  echo d
+  echo d.size
+  d.remove 1
   echo d
   echo d.size
